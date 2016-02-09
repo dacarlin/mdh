@@ -1,0 +1,56 @@
+#metal to ligand
+CST::BEGIN
+  TEMPLATE:: ATOM_MAP: 1 atom_name: FE V1 V2 
+  TEMPLATE:: ATOM_MAP: 1 residue3: FE2
+  TEMPLATE:: ATOM_MAP: 2 atom_name: O1 C1 H1
+  TEMPLATE:: ATOM_MAP: 2 residue3: MEL
+  CONSTRAINT::  distanceAB: 2.2 0.25 500 1 1 
+CST::END
+
+#cofactor to ligand
+CST::BEGIN
+  TEMPLATE:: ATOM_MAP: 1 atom_name: C13 C17 C19 
+  TEMPLATE:: ATOM_MAP: 1 residue3: NAD
+  TEMPLATE:: ATOM_MAP: 2 atom_name: C1 O1 H4
+  TEMPLATE:: ATOM_MAP: 2 residue3: MEL
+  CONSTRAINT::  distanceAB: 2.2 0.25 500 1 1 
+CST::END
+
+#catalytic residue to ligand 
+CST::BEGIN
+  TEMPLATE:: ATOM_MAP: 1 atom_name: NE2 CE1 ND1
+  TEMPLATE:: ATOM_MAP: 1 residue3: HIS
+  TEMPLATE:: ATOM_MAP: 2 atom_name: O1 C1 H1 
+  TEMPLATE:: ATOM_MAP: 2 residue3: MEL
+  CONSTRAINT::  distanceAB: 2.5 0.25 500 1 1 
+CST::END
+
+#metal-binding residues (4) 
+CST::BEGIN
+  TEMPLATE:: ATOM_MAP: 1 atom_name: NE2 CE1 ND1 
+  TEMPLATE:: ATOM_MAP: 1 residue3: HIS
+  TEMPLATE:: ATOM_MAP: 2 atom_name: FE V1 V2
+  TEMPLATE:: ATOM_MAP: 2 residue3: FE2
+  CONSTRAINT::  distanceAB: 2.2 0.25 500 1 1 
+CST::END
+CST::BEGIN
+  TEMPLATE:: ATOM_MAP: 1 atom_name: NE2 CE1 ND1 
+  TEMPLATE:: ATOM_MAP: 1 residue3: HIS
+  TEMPLATE:: ATOM_MAP: 2 atom_name: FE V1 V2
+  TEMPLATE:: ATOM_MAP: 2 residue3: FE2
+  CONSTRAINT::  distanceAB: 2.3 0.25 500 1 1 
+CST::END
+CST::BEGIN
+  TEMPLATE:: ATOM_MAP: 1 atom_name: NE2 CE1 ND1 
+  TEMPLATE:: ATOM_MAP: 1 residue3: HIS
+  TEMPLATE:: ATOM_MAP: 2 atom_name: FE V1 V2
+  TEMPLATE:: ATOM_MAP: 2 residue3: FE2
+  CONSTRAINT::  distanceAB: 2.5 0.25 500 1 1 
+CST::END
+CST::BEGIN
+  TEMPLATE:: ATOM_MAP: 1 atom_name: OD1 CG CB
+  TEMPLATE:: ATOM_MAP: 1 residue3: ASP
+  TEMPLATE:: ATOM_MAP: 2 atom_name: FE V1 V2
+  TEMPLATE:: ATOM_MAP: 2 residue3: FE2
+  CONSTRAINT::  distanceAB: 2.1 0.25 500 1 1 
+CST::END

@@ -1,0 +1,33 @@
+<ROSETTASCRIPTS>
+<SCOREFXNS>
+  <tal weights=talaris2013_cst.wts/>
+</SCOREFXNS>
+<TASKOPERATIONS>
+  <DetectProteinLigandInterface name=detect cut1=10 cut2=12 cut3=14 cut4=16 />
+</TASKOPERATIONS>
+<FILTERS>
+  <EnzScore name=allcst score_type=cstE scorefxn=tal whole_pose=1 energy_cutoff=9 />
+</FILTERS>
+<MOVERS>
+  <AddOrRemoveMatchCsts name=cstadd cst_instruction=add_new />
+  <FavorNativeResidue name=fnr bonus=2 />
+  <PredesignPerturbMover name=predock />
+  <EnzRepackMinimize name=cst_opt cst_opt=1 design=0 cycles=1 task_operations=detect rb_min_jumps=3 />
+  <EnzRepackMinimize name=design cst_opt=0 design=1 cycles=1 scorefxn_minimize=tal scorefxn_repack=tal task_operations=detect rb_min_jumps=3 />
+  <EnzRepackMinimize name=repack_wbb design=0 repack_only=1 scorefxn_minimize=tal scorefxn_repack=tal minimize_bb=1 task_operations=detect rb_min_jumps=3 />
+  <ParsedProtocol name=iterate>
+    <Add mover=predock/>
+    <Add mover=cst_opt/>
+    <Add mover=design/>
+    <Add mover=repack_wbb/>
+  </ParsedProtocol>
+  <GenericMonteCarlo name=monte_repack mover_name=iterate filter_name=allcst />
+</MOVERS>
+<APPLY_TO_POSE>
+</APPLY_TO_POSE>
+<PROTOCOLS>
+  <Add mover_name=cstadd /> 
+  <Add mover_name=fnr />
+  <Add mover_name=monte_repack />
+</PROTOCOLS>
+</ROSETTASCRIPTS>
